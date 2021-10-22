@@ -8,6 +8,14 @@ $(".container__2").css({
     "background-color": "burlywood"})
 
 $(".container__2").append(`
+
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+    <span class="closemd">&times;</span>
+
+    </div>
+    </div>
+
     <div class="container__pago">
         <h2>PAGAR</h2>
         <div class="container__pago__elementos">
@@ -25,4 +33,3 @@ cargar_productos();
 cargar_total();
 cargar_form();
 }
-

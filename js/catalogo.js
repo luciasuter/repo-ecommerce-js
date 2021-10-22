@@ -21,11 +21,11 @@
     $(".container").prepend(`
         <div class="izquierda">
             <div class="filtro">
-                <h2>filtro</h2>
+                <h2>filtrar</h2>
                 <div class="filtro__productos"></div>
             </div>
             <div class="favoritos">
-                    <h2 class="mostrar_favoritos"><i class="fas fa-heart"></i> favoritos</h2>
+                    <h2 class="mostrar_favoritos"><i class="far fa-heart"></i> favoritos</h2>
                     <span class="cantidad__enfavoritos">0 favoritos</span>
                     <div class="favoritos__productos"></div>
             </div>
@@ -45,13 +45,24 @@
     
             
             <div class="filtro_form tipo">
+            
                 <ul>
-                    <li class="filtro_todos">todos</li>
+                    <li class="filtro_todos fas fa-globe"> todos</li>
                     <li class="filtro_internacionales">internacionales</li>
                     <li class="filtro_nacionales">nacionales</li>
                 </ul>
             </div>
+
+            <div class="filtro_form tipo">
             
+                <ul>
+                    <li class="filtro_genero_todos fas fa-tags"> todos</li>
+                    <li class="filtro_alternative">alternative</li>
+                    <li class="filtro_rock">rock</li>
+                    <li class="filtro_soundtrack">soundtrack</li>
+                </ul>
+            </div>
+
             <div class="filtro_form artista buscar__form">
             <input class="buscar_input" type="text" placeholder="filtrar por artista"/>
             </div>
@@ -60,15 +71,14 @@
     `)
     
       
-  const URLGET = "https://my-json-server.typicode.com/luciasuter/re/posts"
-  //Agregamos un botón con jQuery
+    const URLGET = "https://my-json-server.typicode.com/luciasuter/repo-ecommerce-js/posts"
   $(document).ready(function(){
   $.getJSON(URLGET, function (respuesta, estado) {
       if(estado === "success"){
         catalogo = respuesta;
         for (const producto of catalogo) {
           $(".catalogo__productos").append(`
-              <div id="producto__id__${producto.id}" class="container__producto" data-artista="${producto.artista}" data-album="${producto.tipo}">
+              <div id="producto__id__${producto.id}" class="container__producto" data-artista="${producto.artista}" data-album="${producto.tipo}" data-genero="${producto.genero}">
                   <img src="${producto.portada}" alt="" class="cover cover_id${producto.id}">
                   <div class="info">
                     <div class="info_txt">
@@ -77,7 +87,7 @@
                       <span>$${producto.precioVinilo}</span>
                     </div>
                       <div class="btns">
-                          <button class="btn_agregar_favorito" value="${producto.id}"><i class="far fa-heart"></i></button>
+                          <button class="btn_agregar_favorito far fa-heart" value="${producto.id}"></button>
                           <button class="btn_agregar_producto" name="${producto.precioVinilo}" value="${producto.id}">agregar al carrito</button>
                           
                       </div>
@@ -89,8 +99,4 @@
       });
   });
   
-
-
-
-
 

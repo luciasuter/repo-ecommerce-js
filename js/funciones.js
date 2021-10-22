@@ -28,19 +28,45 @@ $(".filtro__productos").on("click", ".filtro_internacionales", () => {
 })
 
 
+//----------------------------------------------------------------------------------------- FILTRAR POR GENERO
+$(".filtro__productos").on("click", ".filtro_genero_todos", () => {
+    $("div[data='catalogo'] div[data-genero='alternative']").show();
+    $("div[data='catalogo'] div[data-genero='soundtrack']").show();
+    $("div[data='catalogo'] div[data-genero='rock']").show();
+})
+
+$(".filtro__productos").on("click", ".filtro_alternative", () => {
+    $("div[data='catalogo'] div[data-genero='alternative']").show();
+    $("div[data='catalogo'] div[data-genero='soundtrack']").hide();
+    $("div[data='catalogo'] div[data-genero='rock']").hide();
+})
+
+$(".filtro__productos").on("click", ".filtro_soundtrack", () => {
+    $("div[data='catalogo'] div[data-genero='soundtrack']").show();
+    $("div[data='catalogo'] div[data-genero='alternative']").hide();
+    $("div[data='catalogo'] div[data-genero='rock']").hide();
+})
+
+$(".filtro__productos").on("click", ".filtro_rock", () => {
+    $("div[data='catalogo'] div[data-genero='rock']").show();
+    $("div[data='catalogo'] div[data-genero='soundtrack']").hide();
+    $("div[data='catalogo'] div[data-genero='alternative']").hide();
+})
+
 
 //----------------------------------------------------------------------------------------- agregar a favorito
 
 $(".catalogo__productos").on("click", ".btn_agregar_favorito", (e1) => {
     e1.preventDefault();
     favorito_id = $(e1.target)[0].value
+    console.log(favorito_id)
     prod_favorito = $(e1.target)
-    prod_favorito.html(`<i class="fas fa-heart"></i>`);
-    prod_favorito.prop('disabled', true);
+    console.log(prod_favorito)
     producto_favorito = catalogo.find(favorito => favorito.id == favorito_id)
-
+    console.log(producto_favorito)
+    prod_favorito.removeClass("far fa-heart").addClass("fas fa-heart");
+    prod_favorito.prop('disabled', true);
     pullear_favoritos(producto_favorito)
-
     $(".cantidad__enfavoritos").html(`${favoritos.length} favoritos`);
 });
 
@@ -54,6 +80,8 @@ $('.favoritos__productos').on('click', '.btn_agregar_producto_fav', function (e)
     pr_id = parseInt($(e.target)[0].value);
     console.log(pr_id);
     producto_buscado = catalogo.find(producto => producto.id == pr_id)
+
+    $(`.btn_agregar_favorito[value='${pr_id}']`).removeClass("fas fa-heart").addClass("far fa-heart").prop('disabled', false);
 
     favoritos = favoritos.filter(kem => kem.id !==pr_id);
     $(`.prod__${pr_id}`).remove()
@@ -78,6 +106,7 @@ $('.favoritos__productos').on('click', '.btn_borrar_favorito', function (e2) {
     console.log(fav_id);
     /*console.log(fav_precio);*/
     favoritos = favoritos.filter(key6 => key6.id !==fav_id);
+    $(`.btn_agregar_favorito[value='${fav_id}']`).removeClass("fas fa-heart").addClass("far fa-heart").prop('disabled', false);
     /*console.log(carrito);
     console.log(array_precio);*/
     $(`.prod__${fav_id}`).remove()
@@ -130,8 +159,6 @@ $('.carrito__productos').on('click', '.btn_borrar_prod', function (e2) {
 
 
 //----------------------------------------------------------------------------------------- comprar productos
-// EMPIEZA llamada AJAX
-const URLGET2   = "https://jsonplaceholder.typicode.com/posts"
 
 $('.carrito_container').on('click', '.btn_comprar', function (e) {
     e.preventDefault();
@@ -141,32 +168,15 @@ $('.carrito_container').on('click', '.btn_comprar', function (e) {
     }
 
     else{
-        carrito.forEach(function(producto) {
-            dato = { id: `${producto.id}`, title: `${producto.titulo}`}
-            infoPost.push(dato)})
-
-        titulos_comprados = (getTitle(infoPost)).join(", ")
-
-       $.post(URLGET2, infoPost ,(respuesta, estado) => {
-            if(estado === "success"){
-                msg_ajax = `se compraron los titulos: ${titulos_comprados}`
-                alert(msg_ajax)
-            }  
-        });
-// FIN llamada AJAX
-        $(document).ready(function(){
                 console.log("comprar")
                 carrito_enJSON    = JSON.stringify(carrito);
-                localStorage.setItem('compra total', carrito_enJSON);
+                sessionStorage.setItem('compra total', carrito_enJSON);
 
                 total_enJson = JSON.stringify(valorTotal);
-                localStorage.setItem('total', total_enJson);
+                sessionStorage.setItem('total', total_enJson);
                 $(".container").remove()
                 $(".derecha").remove()
                 crear_pago();
-            
-
-        });
 
     }
 }
@@ -221,17 +231,18 @@ function pullear_al_carrito(prod){
 
 function pullear_favoritos(fav){
     favoritos.push(fav);
+    fav = $(fav);
     //precio_total.push(prod);
     $(".favoritos__productos").append(`
-            <div class="container__favorito prod__${fav.id}">
-            <img src="${fav.portada}" alt="" class="cover_min">
+            <div class="container__favorito prod__${fav.attr('id')}">
+            <img src="${fav.attr('portada')}" alt="" class="cover_min">
                 <div class="info_favoritos">
-                    <span><b>${fav.titulo}</b></span>
-                    <span><b>${fav.artista}</b></span>
-                    <span>$${fav.precioVinilo}</span>
+                    <span><b>${fav.attr('titulo')}</b></span>
+                    <span><b>${fav.attr('artista')}</b></span>
+                    <span>$${fav.attr('preciovinilo')}</span>
                 </div>
-                <button class="btn_borrar_favorito far fa-times-circle" value="${fav.id}"></button>         
-                <button class="btn_agregar_producto_fav fas fa-shopping-cart" value="${fav.id}" name="${fav.precioVinilo}"></button>         
+                <button class="btn_borrar_favorito far fa-times-circle" value="${fav.attr('id')}"></button>         
+                <button class="btn_agregar_producto_fav fas fa-shopping-cart" value="${fav.attr('id')}" name="${fav.attr('preciovinilo')}"></button>         
             </div>
         `)
 
@@ -251,4 +262,6 @@ function getTitle(array) {
     return array.map(function(item) { return item["title"]; });
   } 
 
+
+//---------------------------------------------------------
 

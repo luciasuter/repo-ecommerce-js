@@ -1,5 +1,5 @@
      
-  const URLGET = "https://my-json-server.typicode.com/luciasuter/re/posts"
+  const URLGET = "https://my-json-server.typicode.com/luciasuter/repo-ecommerce-js/posts"
   //Agregamos un botón con jQuery
   $(document).ready(function(){
   $.getJSON(URLGET, function (respuesta, estado) {
@@ -16,18 +16,39 @@
                   </div>
                   <img src="${novedades.portada}" alt="" class="cover_novedad">
                   <div class="info_novedad">
-                          <span><b>${novedades.titulo}</b></span>
+                          <span class="titulo" value="${novedades.id}">${novedades.titulo}</span>
                           <label for="producto__id__${novedades.id}">${novedades.artista}</label>
                       </div>
                       <div class="info_novedad_2">
                             <span><b>$${novedades.precioVinilo}</b></span>
+                            <button id="play_id_${novedades.id}" class="btn_play far fa-play-circle" value="${novedades.mp3}"></button>
+                            <button id="pause_id_${novedades.id}" class="btn_pause far fa-pause-circle" value="${novedades.id}"></button>
                       </div>
               </div>
           `)
         }  
       }
       });
+
   });
 
 
-  
+
+//---------------------------------------------------------------- funcion play
+$(document).on("click", '.btn_play', function(e) {
+  e.preventDefault();
+  fa = $(e.target)[0].value
+  audio = new Audio(`${fa}`);
+    audio.play()
+    $(e.target).prop('disabled', true);;
+    $(".btn_pause").prop('disabled', false);
+  });
+
+  $(document).on("click", '.btn_pause', function(e) {
+    e.preventDefault();
+    ro = $(e.target).attr('value')
+    console.log(ro)
+    audio.pause();
+    $(`#play_id_${ro}`).prop('disabled', false);
+    $(`#pause_id_${ro}`).prop('disabled', true);;
+});
