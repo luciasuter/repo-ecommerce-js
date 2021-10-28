@@ -1,0 +1,35 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: rgb(255, 255, 255);
+    padding-top: 0.5em;
+    align-items: center;
+    padding-bottom: 0.5em;
+    width: 100%;
+    bottom: 0;
+}
+
+.footer_links{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        font-size: 0.8rem;
+}
+
+.footer_texto{
+    width: 35em;
+    font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 600px){
+
+    .footer_links, .footer_derecha, .footer_texto{
+        font-size: 0.6rem;
+    }
+
+    .footer_texto {
+        width: 20em;
+    }
+    
+}

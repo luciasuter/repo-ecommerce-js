@@ -1,10 +1,6 @@
 
     
-    //----------------------------------------------------------------------------------------- BORRAR PRODUCTO DE PAGO
-
-
-
-    
+//--------------------------------------------------------- CARGAR PRODUCTOS
     function cargar_productos(){
         compra_total = sessionStorage.getItem("compra total");
         parse_compra_total = JSON.parse(compra_total);
@@ -18,18 +14,20 @@
                         <span><b>${producto.artista}</b></span>
                         <span>$${producto.precioVinilo}</span>
                     </div>
-                    <button class="btn__pago far fa-times-circle" value="${producto.id}" name="${producto.precioVinilo}"></button>           
+                    <button class="btn__sacar far fa-times-circle" value="${producto.id}" name="${producto.precioVinilo}"></button>           
                 </div>
         `)
         }
     }
+//--------------------------------------------------------- CARGA EL $ TOTAL
     
     function cargar_total(){
-        $(".total__productos").append(`
-        <div class="valor_total"><span>Total: $ ${valorTotal}</span> 
+        $(".total_valor").append(`
+        <span>Total: $ ${total}</span> 
         
         `)
     }
+//--------------------------------------------------------- CARGA EL FORM
     
     function cargar_form(){
     $(".container__form__pago").append(`
@@ -52,10 +50,10 @@
         <div class="form__item">
             <label for="numero__cuotas">cantidad de cuotas</label>
             <select id="numero__cuotas">
-                <option value="${valorTotal}">1 pago de $${valorTotal}</option>
-                <option value="${cuotas(valorTotal, 3)}">3 pagos de $${cuotas(valorTotal, 3)} </option>
-                <option value="${cuotas(valorTotal, 6)}">6 pagos de $${cuotas(valorTotal, 6)} </option>
-                <option value="${cuotas(valorTotal, 12)}">12 pagos de $${cuotas(valorTotal, 12)} </option>
+                <option value="${total}">1 pago de $${total}</option>
+                <option value="${cuotas(total, 3)}">3 pagos de $${cuotas(total, 3)} </option>
+                <option value="${cuotas(total, 6)}">6 pagos de $${cuotas(total, 6)} </option>
+                <option value="${cuotas(total, 12)}">12 pagos de $${cuotas(total, 12)} </option>
         </select>
         </div>
         
@@ -64,9 +62,32 @@
         </form>
     `)
     }
-    
 
-//--------------------------------------------------------- terminar compra
+//---------------------------------------------------------  BORRAR PRODUCTOS
+
+$(document).on('click', ".btn__sacar", function(e) {
+    e.preventDefault();
+    precio = parseInt($(e.target).attr('name'))
+    iid = parseInt($(e.target).attr('value'))
+            restarTotal(precio)
+            $(".valor_total").html(`Total: $${total}`)
+    e.target.parentElement.remove() // borra correctamente
+    $("#numero__cuotas").html(`
+        <option value="${total}">1 pago de $${total}</option>
+        <option value="${cuotas(total, 3)}">3 pagos de $${cuotas(total, 3)} </option>
+        <option value="${cuotas(total, 6)}">6 pagos de $${cuotas(total, 6)} </option>
+        <option value="${cuotas(total, 12)}">12 pagos de $${cuotas(total, 12)} </option>
+    `)
+
+    if (total === 0){
+        $(".btn__form__comprar").prop("disabled", true);
+    $(".container__pago").append(`<div class="aviso"> <span class="aviso_txt">hay 0 elementos en el carrito.</span><a href="catalogo.html"><button class="btn_return">volver al catalogo</button></a></div>`)
+    $(".aviso").fadeIn('fast').css('display', 'flex');
+    }
+
+});
+
+//--------------------------------------------------------- TERMINAR COMPRA
 
     $(document).on('submit', ".form__pago", {once:true}, function(e) {
         e.preventDefault();
@@ -81,10 +102,13 @@
         form_datos.push(form_name, form_email, form_tel, form_cuotas)
         console.log(form_datos)
 
-        $(".modal-content").append(`
-            <h3>¡muchas gracias por tu compra ${form_name}!</h3>
+        datosCompra_enJSON    = JSON.stringify(form_datos);
+        sessionStorage.setItem('datos de compra', datosCompra_enJSON);
 
-            <p>detalles de la misma:</p><br>
+        $(".modal-content").append(`
+            <h3>¡muchas gracias por tu compra, ${form_name}!</h3>
+
+            <p>detalles de la misma:</p>
                 <ul>
                     <li>nombre: ${form_name}</li>
                     <li>mail: ${form_email}</li>
@@ -98,6 +122,8 @@
         
         
     });
+
+//--------------------------------------------------------- FUNCION CUOTAS
     
     function cuotas(valor, numeroCuotas){
         valor_parse = parseFloat(valor)
@@ -106,52 +132,14 @@
         return Math.round((((valor_parse * (numeroCuotas_parse / 10)) + valor_parse) / numeroCuotas_parse))
         }
 
-
-
-        
- //------------------------------------------------------   BORRAR PRODUCTOS
- $(document).on('click', ".btn__pago", function(e) {
-    e.preventDefault();
-
-
-prod_pago_id = parseInt($(e.target).val());
-prod_pago_precio = parseInt($(e.target).attr("name"));
-
-carrito = carrito.filter(keyy => keyy.id !==prod_pago_id);
-array_precio = array_precio.filter(ke2 => ke2 !==prod_pago_precio);
-
-$(`.prod__${prod_pago_id}`).remove()
-
-valorTotal = actualizarTotal(array_precio);
-$(".valor_total").html(`Total: $ ${valorTotal}`);
-$(".cantidad__encarrito").html(`${carrito.length} productos`);
-$("#numero__cuotas").html(`
-    <option value="${valorTotal}">1 pago de $${valorTotal}</option>
-    <option value="${cuotas(valorTotal, 3)}">3 pagos de $${cuotas(valorTotal, 3)} </option>
-    <option value="${cuotas(valorTotal, 6)}">6 pagos de $${cuotas(valorTotal, 6)} </option>
-    <option value="${cuotas(valorTotal, 12)}">12 pagos de $${cuotas(valorTotal, 12)} </option>
-`)     
-
-console.log(array_precio)
-});
-
- //------------------------------------------------------   MODAL
-
- /*$(document).on('click', "#btn_modal", function(){
-    $(".modal").css("display", "block")
-});*/
-
+//---------------------------------------------------------   CERRAR MODAL
 $(document).on('click', ".closemd", function(){
-    $(".modal").css("display", "none");
+    $("#myModal").css("display", "none");
 });
 
+/*
 //------------------------------------------------- get data
 $(".form__pago :input").each(function(){
     input_form = $(this); 
-    console.log(input_form.val()) // This is the jquery object of the input, do what you will
-   });
-
-
-
-//agregar cambiar cantidad
-//arreglar fav???kks
+    console.log(input_form.val()) 
+   });*/

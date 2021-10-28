@@ -1,0 +1,16 @@
+/* STYLE */ 
+@import "_reset.scss";
+@import "_variables.scss";
+@import "_fonts.scss";
+
+
+/*LAYOUT*/
+@import "./layout/_layout.scss";
+
+/*PAGES*/
+@import "./pages/_main.scss";
+@import "./pages/_catalogo.scss";
+@import "./pages/_cart.scss";
+
+/*ASSETS*/
+@import "./assets/_hover.scss";

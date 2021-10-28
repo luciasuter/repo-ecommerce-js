@@ -1,6 +1,4 @@
-     
-  const URLGET = "https://my-json-server.typicode.com/luciasuter/repo-ecommerce-js/posts"
-  //Agregamos un botón con jQuery
+const URLGET = "https://my-json-server.typicode.com/luciasuter/repo-ecommerce-js/posts"
   $(document).ready(function(){
   $.getJSON(URLGET, function (respuesta, estado) {
       if(estado === "success"){
@@ -9,21 +7,25 @@
         for (const novedades of catalogo_novedad) {
           $(".productos_novedades").append(`
               <div id="producto__id__${novedades.id}" class="producto_novedad" data-album="${novedades.tipo}">
-                  <div class="hover_txt">
+                  <div class="container_hover_txt">
                     <div class ="txt">
                     ${novedades.info}
                     </div>
                   </div>
                   <img src="${novedades.portada}" alt="" class="cover_novedad">
-                  <div class="info_novedad">
-                          <span class="titulo" value="${novedades.id}">${novedades.titulo}</span>
-                          <label for="producto__id__${novedades.id}">${novedades.artista}</label>
-                      </div>
-                      <div class="info_novedad_2">
-                            <span><b>$${novedades.precioVinilo}</b></span>
-                            <button id="play_id_${novedades.id}" class="btn_play far fa-play-circle" value="${novedades.mp3}"></button>
-                            <button id="pause_id_${novedades.id}" class="btn_pause far fa-pause-circle" value="${novedades.id}"></button>
-                      </div>
+                  <div class="infos">
+                    <div class="info_novedad">
+                            <span class="producto__titulo" value="${novedades.id}">${novedades.titulo}</span>
+                            <label for="producto__id__${novedades.id}">${novedades.artista}</label>
+                    </div>
+                        <div class="info_novedad_2">
+                              <span><b>$${novedades.precioVinilo}</b></span>
+                              <div class="producto__btns">
+                                  <button id="play_id_${novedades.id}" class="btn_play far fa-play-circle fa-lg" value="${novedades.mp3}"></button>
+                                  <button id="pause_id_${novedades.id}" class="btn_pause far fa-pause-circle fa-lg" value="${novedades.id}"></button>
+                              </div>
+                        </div>
+                  </div>
               </div>
           `)
         }  
@@ -34,7 +36,8 @@
 
 
 
-//---------------------------------------------------------------- funcion play
+//---------------------------------------------------------------- funcion play music
+
 $(document).on("click", '.btn_play', function(e) {
   e.preventDefault();
   fa = $(e.target)[0].value

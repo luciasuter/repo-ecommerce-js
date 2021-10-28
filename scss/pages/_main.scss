@@ -1,0 +1,328 @@
+.container_index{ // para todos
+    display: flex;
+    flex-direction: column;
+}
+
+.container_1__izq{
+    display: flex;
+    padding: 0.5em;
+}
+.container_1__izq span{
+    color:white;
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.1rem;
+}
+
+.container_1{
+    background-color: #1d1d1d;
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__izq{
+        width: 90vw;
+        margin: 10px;
+        
+    }
+
+    &__der{
+        display: none;
+    }
+    
+}
+
+.container_2{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.producto_novedad{ // cada producto
+    margin: 1.5em 0 1.5em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+
+.info_novedad{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: inherit;
+}
+
+.info_novedad_2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: inherit; 
+}
+
+.btn_ver_catalogo{
+    padding: 0.1rem;
+    margin: 0.5rem 0.5rem 2rem 0.5rem;
+}
+
+.btn_ver_catalogo:hover{
+    cursor:pointer;
+}
+
+.infos{
+    width:inherit;
+    padding: 0.3em;
+}
+
+h3{
+    margin-top: 2.5em;
+}
+
+/*---------------- efecto texto hover*/
+.hover_txt{
+    width: 100%;
+}
+
+.container_hover_txt {
+    position: absolute;
+    top: 0;
+    color:rgb(255, 255, 255);
+    background-color:rgba(36, 36, 36, 0.8);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.container_hover_txt:hover {
+    opacity:1;
+}
+
+.txt{
+    line-height: 20px;
+    text-align:left;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+
+/*---------------- efecto texto hover*/
+
+.producto_novedad{
+    padding: 20px 20px 20px 20px;
+    border: solid 1px black;
+}
+
+.cover_novedad{
+    border: solid 1px black;
+}
+.infos{
+    border: solid 1px black;
+}
+
+/* RESPONSIVE */ 
+
+/* SMALL */
+
+@media only screen and (max-width: 600px){
+    
+    .producto_novedad{
+        margin: 2.5em 0 2.5em 0;
+        width: 260px;
+    }
+
+    .container_1__izq {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .cover_novedad{
+        width: 260px;
+        height: 260px;
+        margin-bottom: 0.5em;
+    }
+    
+    .producto__titulo{
+        margin-bottom: 0.5em;
+    }
+
+    .btn_ver_catalogo{
+        font-size: 1.1rem;
+    }
+
+    .infos{
+        width:250px;
+    }
+
+    /*hover*/
+
+    .container_hover_txt {
+        height: 260px;
+        width: 260px;
+        top: 1.3em;
+    }
+
+    .txt{
+        font-size: 0.6rem;
+    }
+}
+
+/* MEDIUM */
+
+@media only screen and (min-width: 601px) and (max-width: 1199px){
+
+    .container_1__izq span{
+        font-size: 1.7rem;
+    }
+
+    h3 {
+        margin-bottom: 2.5em;
+        }
+    
+    .productos_novedades {
+        display: grid;
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 33% 33% 33%;
+        height: auto;
+        width:100%;
+        align-items: center;
+        justify-items: center;
+    }
+
+    
+    .producto_novedad{
+        width: 200px;
+    }
+
+    .cover_novedad{
+        max-width: 200px;
+        max-height: 200px;
+        height: 200px;
+        width: 200px;
+        margin-bottom: 0.5em;
+    }
+
+    .infos {
+        width: 190px;
+    }
+    
+    .info_novedad{
+        height:75px;
+    }
+    
+    .producto__titulo{
+        margin-bottom: 0.5em;
+    }
+
+    .btn_ver_catalogo{
+        font-size: 1.5rem;
+    }
+
+    /*hover*/
+
+    .container_hover_txt {
+        height: 201px;
+        width: 200px;
+        top: 20px;
+    }
+
+    .txt{
+        font-size: 0.6rem;
+        line-height: 12px;
+    }
+}
+
+
+/* LARGE */
+
+@media only screen and (min-width: 1200px){
+
+    .container_1{
+        display: flex;
+        flex-direction: row;
+        height: 75vh;
+        width:100%;
+
+        &__izq{
+        font-size: 40px;
+        width:50%;
+        height: auto;
+        }
+
+        &__der{
+            display: flex;
+            width: 50%;
+            height: auto;
+            overflow: hidden;
+        }
+    }
+
+    .img_der{
+        height: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+
+    .img_der img{
+        width: 48em;      
+    }
+
+    .productos_novedades {
+        display: grid;
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 33% 33% 33%;
+        height: auto;
+        width:100%; 
+        align-items: center;
+        justify-items: center;
+        margin-top: 2em;
+    }
+
+    .producto_novedad{
+        width:300px;
+    }
+
+    .infos{
+        width: 289px;
+    }
+
+    .cover_novedad{
+        width: 300px;
+        height: 300px;
+        margin-bottom: 0.5em;
+    }
+    
+    .producto__titulo{
+        margin-bottom: 0.5em;
+    }
+
+    .btn_ver_catalogo{
+        font-size: 1.5rem;
+    }
+
+    /*hover*/
+
+    .container_hover_txt {
+        height: 300px;
+        width: 300px;
+        top: 1.3em;
+    }
+
+    .txt{
+        font-size: 0.8rem;
+    }
+}

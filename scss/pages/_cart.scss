@@ -1,0 +1,339 @@
+
+
+
+    .container__2{
+        display: none;
+    }
+
+    .total__cover{
+        width: 90px;
+        height: 90px;
+        position: relative;
+    }
+
+
+    /* MODAL */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .closemd {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+
+    .closemd:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-content p{
+        text-decoration: underline;
+    }
+
+    .aviso{
+        position: absolute;
+        width: 200px;
+        height: 150px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        color:white;
+        background-color: rgb(0, 0, 0);
+    }
+
+    /* FIN MODAL */ 
+
+    .btn__form__comprar:hover, .btn_regresar:hover, .closemd:hover, .btn__sacar:hover{
+        cursor:pointer;
+    }
+
+
+
+/* RESPONSIVE */ 
+
+/* SMALL & MEDIUM */
+@media only screen and (max-width: 1199px){
+
+
+    .size{
+        display: flex;
+        height: auto;
+        width: 100vw;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .container__pago {
+        background-color: rgb(255, 255, 255);
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .overflow {
+        display: flex;
+        flex-direction: column;
+        width: inherit;
+        align-items: center;
+    }
+
+    .total__productos {
+        background-color: white;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h3 {
+        margin: 1rem 0.5rem 0.5rem 0.5rem;
+        text-align: center;
+    }
+
+    .info__pago {
+        display: flex;
+        width: 65vw;
+        max-height: 90px;
+        flex-direction: column;
+        background-color: #fff;
+        padding-left: 0.3rem;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    .total {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0.5em 0.5em 0.5em 0.5em;
+    }
+
+    .total_valor{
+        padding: 0.7em 0 0.7em 0;
+        font-weight: 600;
+        padding: 0.2em;
+        background-color: black;
+        margin: 1em;
+    }
+
+    .total_valor span{
+        color: white;
+    }
+
+    .datos__pago{
+        background-color:#fafafa;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container__form__pago {
+        margin-bottom: 2em;
+    }
+
+    .form__pago {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form__item{
+        display: flex;
+        flex-direction: column;
+        margin: 0.3em 0 0.3em 0;
+    }
+
+    .form__comprar {
+        margin: 1rem;
+    }
+
+    .btn__form__comprar {
+        background-color:#e3e3e3;
+    }
+
+    .btn__sacar{
+        height: 1.5em;
+    }
+
+    .body-color-bg{
+        background-color: white;
+    }
+}
+
+/* SOLO MEDIUM */
+@media only screen and (min-width: 608px) and (max-width: 1199px){
+
+
+    .total__productos{
+        height: auto;
+        max-height:425px;
+        overflow-y: scroll;
+    }
+
+    .body-color-bg{
+        background-color: white;
+    }
+}
+
+/* LARGE */
+@media only screen and (min-width: 1200px){
+
+
+    .size{
+        display: grid;
+        height: auto;
+        grid-template-columns: 10% 80% 10%;
+        grid-template-areas: '. centro .' ;
+        background-color: rgb(0, 0, 0);
+    }
+
+
+        
+    .container__pago{
+        grid-area: centro;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width:100%;
+        margin-bottom: 5em;
+        margin-top: 3em;
+        
+    }
+
+    .container__pago__elementos{
+        background-color: #fff;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .container__pago__elementos h3{
+        color: #000;
+    }
+
+    .total__productos{
+
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        margin-left: 5em;
+        padding: 1em;
+        max-height: 450px;
+        overflow-y: scroll;
+    }
+
+
+    .datos__pago{
+        background-color:#ffffff;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .total{
+        display: flex;
+        flex-direction: row;
+        margin: 0.5em 0.5em 0.5em 0.5em;
+        align-items: center;
+    }
+
+    .total_valor{
+        padding: 0.7em 0 0.7em 0;
+        font-weight: 600;
+        padding: 0.2em;
+        background-color: black;
+        margin: 1em;
+    }
+
+    .total_valor span{
+        color: white;
+    }
+
+    .total__cover{
+        width: 90px;
+        height: 90px;
+        position: relative;
+    }
+
+
+    .info__pago{
+        display: flex;
+        width:300px;
+        height:90px;
+        flex-direction: column;
+        background-color: rgb(255, 255, 255);
+        padding: 0 0.1em 0em 0.1em;
+        align-items: baseline;
+        justify-content: center;
+        
+    }
+
+    .btn__pago{
+        width:18px;
+        height:18px;
+        margin: 0.8rem 0 0.8rem 2px;
+    }
+
+
+    .form__item{
+        display: flex;
+        flex-direction: column;
+        margin: 0.3em 0 0.3em 0;
+    }
+
+    .form__pago {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form__comprar {
+        margin: 1rem;
+    }
+
+    .btn__form__comprar {
+        background-color:#e3e3e3;
+    }
+    
+    .btn__sacar{
+        height: 1.5em;
+    }
+
+    .body-color-bg{
+        background-color: black;
+    }
+
+}
+

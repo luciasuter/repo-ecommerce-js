@@ -1,0 +1,49 @@
+.header{
+    height: auto;
+    position:sticky;
+    top: 0;
+    z-index: 11;  
+    background-color: rgb(255, 255, 255);
+    padding-left:0.5em;
+}
+
+.header:hover{
+    cursor:pointer;
+}
+
+
+@media only screen and (max-width: 1199px){
+
+    /* Underline Reveal */
+    .hvr-underline-reveal {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        position: relative;
+        overflow: hidden;
+    }
+    .hvr-underline-reveal:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #000000;
+        height: 3px;
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.2s;
+        transition-duration: 0.2s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+    .hvr-underline-reveal:hover:before, .hvr-underline-reveal:focus:before, .hvr-underline-reveal:active:before {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    }

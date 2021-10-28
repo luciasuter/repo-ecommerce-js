@@ -27,3 +27,7 @@ let form_tel;
 let form_cuotas;
 let form_datos = []
 
+let precio;
+let total = 0;
+let container__carrito = []
+

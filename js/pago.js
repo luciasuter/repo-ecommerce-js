@@ -1,12 +1,11 @@
 
 function crear_pago(){
-$(".container__2").css({
-    "display": "grid",  
-    "height": "100vh",
-    "grid-template-columns": "10% 80% 10%",
-    "grid-template-areas": "'. centro .' ",
-    "background-color": "burlywood"})
+$("title").html('BLACK CAT RECORDS :: pago');
+$(".titulo").removeClass('titulo_link hvr-underline-reveal')
+$("body").addClass('body-color-bg')
+$(".footer").css('position', 'fixed')
 
+$(".container__2").addClass('size')
 $(".container__2").append(`
 
     <div id="myModal" class="modal">
@@ -17,16 +16,16 @@ $(".container__2").append(`
     </div>
 
     <div class="container__pago">
-        <h2>PAGAR</h2>
         <div class="container__pago__elementos">
-            <div class="total__productos">
-                <h3>productos en carrito</h3>
+            <h3>productos en carrito</h3>
+            <div class="total__productos">  
             </div>
+            <div class="total_valor"></div>
+        </div>
             <div class="datos__pago">
                 <h3>por favor completa los siguientes datos</h3>
                 <div class="container__form__pago"></div>
             </div>
-        </div>
     </div>
 `);
 cargar_productos();
