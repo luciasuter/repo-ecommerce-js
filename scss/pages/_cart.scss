@@ -39,20 +39,17 @@
     .closemd {
         color: #aaa;
         float: right;
-        font-size: 28px;
+        font-size: $spaceTxt4 - 0.25em;
         font-weight: bold;
     }
 
 
     .closemd:focus {
-        color: black;
+        color: $accent1;
         text-decoration: none;
         cursor: pointer;
     }
 
-    .modal-content p{
-        text-decoration: underline;
-    }
 
     .aviso{
         position: absolute;
@@ -61,8 +58,8 @@
         display: none;
         flex-direction: column;
         align-items: center;
-        color:white;
-        background-color: rgb(0, 0, 0);
+        color:$txtColour1;
+        background-color: $accent1;
     }
 
     /* FIN MODAL */ 
@@ -83,13 +80,13 @@
         display: flex;
         height: auto;
         width: 100vw;
-        background-color: white;
+        background-color: $layoutColor;
         flex-direction: column;
         align-items: center;
     }
     
     .container__pago {
-        background-color: rgb(255, 255, 255);
+        background-color: $layoutColor;
         width: inherit;
         display: flex;
         flex-direction: column;
@@ -104,24 +101,21 @@
     }
 
     .total__productos {
-        background-color: white;
+        background-color: $layoutColor;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    h3 {
-        margin: 1rem 0.5rem 0.5rem 0.5rem;
-        text-align: center;
-    }
+    
 
     .info__pago {
         display: flex;
         width: 65vw;
         max-height: 90px;
         flex-direction: column;
-        background-color: #fff;
+        background-color: $layoutColor;
         padding-left: 0.3rem;
         align-items: baseline;
         justify-content: center;
@@ -138,12 +132,12 @@
         padding: 0.7em 0 0.7em 0;
         font-weight: 600;
         padding: 0.2em;
-        background-color: black;
+        background-color: $accent1;
         margin: 1em;
     }
 
     .total_valor span{
-        color: white;
+        color: $txtColour1;
     }
 
     .datos__pago{
@@ -183,12 +177,12 @@
     }
 
     .body-color-bg{
-        background-color: white;
+        background-color: $layoutColor;
     }
 }
 
 /* SOLO MEDIUM */
-@media only screen and (min-width: 608px) and (max-width: 1199px){
+@media only screen and (min-width: 601px) and (max-width: 1199px){
 
 
     .total__productos{
@@ -198,7 +192,7 @@
     }
 
     .body-color-bg{
-        background-color: white;
+        background-color: $layoutColor;
     }
 }
 
@@ -211,25 +205,26 @@
         height: auto;
         grid-template-columns: 10% 80% 10%;
         grid-template-areas: '. centro .' ;
-        background-color: rgb(0, 0, 0);
+        background-color: $txtColour2;
     }
 
 
         
     .container__pago{
         grid-area: centro;
-        background-color: #fff;
+        background-color: $layoutColor;
         display: flex;
         flex-direction: row;
         align-items: center;
         width:100%;
         margin-bottom: 5em;
         margin-top: 3em;
+        justify-content: center;
         
     }
 
     .container__pago__elementos{
-        background-color: #fff;
+        background-color: $layoutColor;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -237,13 +232,10 @@
 
     }
 
-    .container__pago__elementos h3{
-        color: #000;
-    }
 
     .total__productos{
 
-        background-color: #fff;
+        background-color: $layoutColor;
         display: flex;
         flex-direction: column;
         align-items: baseline;
@@ -255,7 +247,7 @@
 
 
     .datos__pago{
-        background-color:#ffffff;
+        background-color:$layoutColor;
         width:100%;
         display: flex;
         flex-direction: column;
@@ -267,18 +259,6 @@
         flex-direction: row;
         margin: 0.5em 0.5em 0.5em 0.5em;
         align-items: center;
-    }
-
-    .total_valor{
-        padding: 0.7em 0 0.7em 0;
-        font-weight: 600;
-        padding: 0.2em;
-        background-color: black;
-        margin: 1em;
-    }
-
-    .total_valor span{
-        color: white;
     }
 
     .total__cover{
@@ -293,18 +273,13 @@
         width:300px;
         height:90px;
         flex-direction: column;
-        background-color: rgb(255, 255, 255);
+        background-color: $layoutColor;
         padding: 0 0.1em 0em 0.1em;
         align-items: baseline;
         justify-content: center;
         
     }
 
-    .btn__pago{
-        width:18px;
-        height:18px;
-        margin: 0.8rem 0 0.8rem 2px;
-    }
 
 
     .form__item{
@@ -332,7 +307,13 @@
     }
 
     .body-color-bg{
-        background-color: black;
+        background-color: $accent1;
+    }
+
+    .btn__pago{
+        width:18px;
+        height:18px;
+        margin: 0.8rem 0 0.8rem 2px;
     }
 
 }

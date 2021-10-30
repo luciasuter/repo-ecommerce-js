@@ -2,7 +2,6 @@
 //----------------------------------------------------------------------------------------- mostrar / ocultar 
 
 //-------------------------- carrito
-
 $(".cart_icon").click(() => {
 
     $(".carrito_container").toggle("fast");
@@ -10,33 +9,32 @@ $(".cart_icon").click(() => {
     return false;
 });
 
-//-------------------------- favorito
 
+//-------------------------- favorito
 $(".mostrar_favoritos").click(() => {
     $(".favoritos__productos").toggle("fast");
     return false;
 });
 
-//-------------------------- filtro //cambia arrow down a arrow up
 
+//-------------------------- filtro 
+// mostrar 
 $(".fa-angle-double-down").click(() => {
     $(".container__filtro").toggle("fast");
     $(".container__filtro").toggleClass('active');
-    $(".icn_filtro").toggleClass("fa-angle-double-down fa-angle-double-up");
-   // $(".fa-angle-double-down").addClass("fa-angle-double-up").removeClass("fa-angle-double-down");
+    $(".icn_filtro").toggleClass("fa-angle-double-down fa-angle-double-up"); // cambia arrow down a arrow up
     return false;
 });
 
+// ocultar 
 $(".titulo_link").click(() => {
     $(".izquierda").toggle("fast");
     $(".izquierda").toggleClass('active');
-   // $(".fa-angle-double-down").addClass("fa-angle-double-up").removeClass("fa-angle-double-down");
     return false;
 });
 
 
 //----------------------------------------------------------------------------------------- pullear producto a carrito
-
 function pullear_a_carrito(prod){
     $(".carrito_container__productos").append(`
             <div class="container__carrito" value="${prod.id}">
@@ -46,12 +44,12 @@ function pullear_a_carrito(prod){
                     <span>$${prod.precioVinilo}</span>
                 </div>
                 <button class="btn_borrar far fa-times-circle" value="${prod.id}" name="${prod.precioVinilo}"></button>           
-            </div>
-        `)
+            </div>`
+    );
 }
 
-//----------------------------------------------------------------------------------------- pullear producto a favoritos
 
+//----------------------------------------------------------------------------------------- pullear producto a favoritos
 function pullear_favoritos(fav){
     favoritos.push(fav);
     $(".favoritos__productos").append(`
@@ -65,25 +63,11 @@ function pullear_favoritos(fav){
                     <button class="btn_borrar_favorito far fa-times-circle" value="${fav.id}"></button>         
                     <button class="btn_agregar_producto_fav fas fa-shopping-cart" value="${fav.id}" name="${fav.precioVinilo}"></button>         
                 </div>
-            </div>
-        `)
+            </div>`
+        );
 
     return favoritos;
 }
-
-
-/*
-
-function actualizarTotal(array){
-    precio_total = array.reduce((a, b) => a + b, 0);
-    
-    return precio_total;
-}
-
-function getTitle(array) {
-    return array.map(function(item) { return item["title"]; });
-} 
-*/
 
 //--------------------------------------------------------- suma y resta de totales
 

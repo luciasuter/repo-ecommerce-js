@@ -16,17 +16,12 @@
 }
 
 .carrito{
-    background-color:white;
+    background-color:$layoutColor;
     
 }
 .carrito_container, .favoritos__productos, .container__filtro{
     display: none;
 }
-
-.cantidad__encarrito {
-    padding-left: 0.5em;
-}
-
 
 .container__carrito, .container__favorito{
     width:100%;
@@ -48,17 +43,13 @@
 }
 
 .favoritos__productos{
-    background-color: white;
+    background-color: $layoutColor;
 }
 
 
 .cover_min, .cover_xmin{
     max-width: 75px;
     max-height: 75px;
-}
-
-.btn_borrar_prod{
-    margin: 0.8rem 0 0.8rem 0;
 }
 
 .info_txt{
@@ -75,11 +66,6 @@
     width: inherit;
 }
 
-.btn_agregar_favorito, .btn_agregar_producto{
-    width:1.5rem;
-    height: 1.5rem;
-}
-
 .cover:hover {
     filter: brightness(75%);
     transition: all 0.5s ease;
@@ -88,15 +74,15 @@
 
 .container__producto{
     padding: 20px 20px 20px 20px;
-    border: solid 1px black;
+    border: solid 1px $accent1;
 }
 
 .cover{
-    border: solid 1px black;
+    border: solid 1px $accent1;
     margin-bottom: 0.5em;
 }
 .info{
-    border: solid 1px black;
+    border: solid 1px $accent1;
     padding: 0.3em;
 }
 
@@ -159,7 +145,7 @@
     .izquierda{
         height: auto;
         position: fixed;
-        background-color: rgb(255, 255, 255);
+        background-color: $layoutColor;
         width: 100%;
         display: none;
         flex-direction: column;
@@ -197,11 +183,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-    }
-
-    .box_filtro ul li{
-        font-size: 0.8rem;
-    }
+    } 
 
     .favoritos {
         padding-right: 1em;
@@ -229,13 +211,13 @@
         width: 260px;
         margin: 0em 0 3em 0;
         padding: 20px 20px 20px 20px;
-        border: solid 1px black;
+        border: solid 1px $accent1;
     }
 
     .cover{
         height: 260px;
         width: 260px;
-        border: solid 1px black;
+        border: solid 1px $accent1;
         margin-bottom: 0.5em;
     }
 
@@ -244,7 +226,7 @@
         height: auto;
         display: flex;
         flex-direction: row;
-        border: solid 1px black;
+        border: solid 1px $accent1;
         padding: 0.3em;
     }
 
@@ -256,9 +238,7 @@
         
     }
 
-    .btn_agregar_favorito{
-        margin-bottom: 1em;
-    }
+
 
 }
     
@@ -320,7 +300,7 @@
         width: 100%;
         height: auto;
         position: fixed;
-        background-color: rgb(255, 255, 255);
+        background-color: $layoutColor;
         padding: 0.5em 0 0.5em 1em;
         display: none;
         flex-direction: column;
@@ -358,10 +338,6 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-    }
-
-    .box_filtro ul li{
-        font-size: 0.8rem;
     }
 
     .catalogo{
@@ -408,11 +384,6 @@
     }
 
 
-    
-//*******************
-
-    
-
 }
 
 /* LARGE */
@@ -423,7 +394,7 @@
         display: grid;
         grid-template-columns: 15% 85%;
         grid-template-areas: "izq cen";
-        background-color: white;
+        background-color: $layoutColor;
         margin: 0 3em 0 3em;
     }
 
@@ -451,7 +422,7 @@
 
     .catalogo{
         grid-area: cen;
-        background-color: white;
+        background-color: $layoutColor;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -493,6 +464,7 @@
         width: 90%;
         height: inherit;
     }
+
     .btns{
         width: 15%;
         display: flex;
@@ -510,31 +482,15 @@
         right: 0;
         width:100px;
         flex-direction: column;
-        background-color: rgb(0, 0, 0);
+        background-color: $accent1;
         overflow-x: hidden;
     }
 
     .cart{
-        color:rgb(0, 0, 0)
+        color:$txtColour2;
     }
-
-    .cantidad__encarrito{
-        font-size: 0.7rem;
-        padding: 0.2em;
-    }
-    
 
      /* cart */
-
-    .carrito_container__btns {
-        padding-left: 1em;
-        background-color: rgb(0, 0, 0);
-        font-size: 0.8rem;
-        color: white;
-        padding: 0.5em;
-    }
-
-
 
     .cart.active{
         display: flex;
@@ -545,7 +501,7 @@
         width: inherit;
         display: flex;
         justify-content: left;
-        color: white;
+        color: $layoutColor;
         padding: 0.5em;
         
     }
@@ -569,12 +525,6 @@
     .cover_xmin{
         max-width: 50px;
         max-height: 50px;
-    }
-
-    .info_favoritos{
-        font-size: 0.6rem;
-        width: 60%;
-        padding-left: 0.5em;
     }
 
     .container__favorito{

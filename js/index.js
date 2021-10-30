@@ -1,3 +1,4 @@
+// carga los productos marcados como "novedad" desde mi 'servidor' 
 const URLGET = "https://my-json-server.typicode.com/luciasuter/repo-ecommerce-js/posts"
   $(document).ready(function(){
   $.getJSON(URLGET, function (respuesta, estado) {
@@ -36,22 +37,25 @@ const URLGET = "https://my-json-server.typicode.com/luciasuter/repo-ecommerce-js
 
 
 
-//---------------------------------------------------------------- funcion play music
+//---------------------------------------------------------------- funcion song
+
+// play song
 
 $(document).on("click", '.btn_play', function(e) {
   e.preventDefault();
-  fa = $(e.target)[0].value
-  audio = new Audio(`${fa}`);
-    audio.play()
-    $(e.target).prop('disabled', true);;
+  boton_seleccionado = $(e.target)[0].value
+  audio = new Audio(`${boton_seleccionado}`);
+    audio.play();
+    $(e.target).prop('disabled', true);
     $(".btn_pause").prop('disabled', false);
-  });
-
-  $(document).on("click", '.btn_pause', function(e) {
-    e.preventDefault();
-    ro = $(e.target).attr('value')
-    console.log(ro)
-    audio.pause();
-    $(`#play_id_${ro}`).prop('disabled', false);
-    $(`#pause_id_${ro}`).prop('disabled', true);;
 });
+
+// pause song
+$(document).on("click", '.btn_pause', function(e) {
+    e.preventDefault();
+    boton_seleccionado = $(e.target).attr('value');
+    console.log(boton_seleccionado);
+    audio.pause();
+    $(`#play_id_${boton_seleccionado}`).prop('disabled', false);
+    $(`#pause_id_${boton_seleccionado}`).prop('disabled', true);
+  });

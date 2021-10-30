@@ -7,16 +7,9 @@
     display: flex;
     padding: 0.5em;
 }
-.container_1__izq span{
-    color:white;
-    text-align: center;
-    font-weight: 500;
-    text-transform: uppercase;
-    padding: 0.1rem;
-}
 
 .container_1{
-    background-color: #1d1d1d;
+    background-color: $accent1;
     width: 100vw;
     height: 30vh;
     display: flex;
@@ -39,7 +32,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: $layoutColor;
     align-items: center;
     justify-content: center;
 }
@@ -69,33 +62,21 @@
     width: inherit; 
 }
 
-.btn_ver_catalogo{
-    padding: 0.1rem;
-    margin: 0.5rem 0.5rem 2rem 0.5rem;
-}
-
-.btn_ver_catalogo:hover{
-    cursor:pointer;
-}
 
 .infos{
     width:inherit;
     padding: 0.3em;
 }
 
-h3{
-    margin-top: 2.5em;
-}
-
 /*---------------- efecto texto hover*/
+
 .hover_txt{
     width: 100%;
 }
 
 .container_hover_txt {
     position: absolute;
-    top: 0;
-    color:rgb(255, 255, 255);
+    color:$txtColour1;
     background-color:rgba(36, 36, 36, 0.8);
     text-align: center;
     z-index: 10;
@@ -109,25 +90,18 @@ h3{
     opacity:1;
 }
 
-.txt{
-    line-height: 20px;
-    text-align:left;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-}
-
-
 /*---------------- efecto texto hover*/
 
 .producto_novedad{
     padding: 20px 20px 20px 20px;
-    border: solid 1px black;
+    border: solid 1px $accent1;
 }
 
 .cover_novedad{
-    border: solid 1px black;
+    border: solid 1px $accent1;
 }
 .infos{
-    border: solid 1px black;
+    border: solid 1px $accent1;
 }
 
 /* RESPONSIVE */ 
@@ -154,43 +128,15 @@ h3{
         height: 260px;
         margin-bottom: 0.5em;
     }
-    
-    .producto__titulo{
-        margin-bottom: 0.5em;
-    }
-
-    .btn_ver_catalogo{
-        font-size: 1.1rem;
-    }
 
     .infos{
         width:250px;
-    }
-
-    /*hover*/
-
-    .container_hover_txt {
-        height: 260px;
-        width: 260px;
-        top: 1.3em;
-    }
-
-    .txt{
-        font-size: 0.6rem;
     }
 }
 
 /* MEDIUM */
 
 @media only screen and (min-width: 601px) and (max-width: 1199px){
-
-    .container_1__izq span{
-        font-size: 1.7rem;
-    }
-
-    h3 {
-        margin-bottom: 2.5em;
-        }
     
     .productos_novedades {
         display: grid;
@@ -222,27 +168,15 @@ h3{
     .info_novedad{
         height:75px;
     }
-    
-    .producto__titulo{
-        margin-bottom: 0.5em;
-    }
-
-    .btn_ver_catalogo{
-        font-size: 1.5rem;
-    }
-
-    /*hover*/
-
+ 
+    /* hover */
     .container_hover_txt {
         height: 201px;
         width: 200px;
         top: 20px;
     }
 
-    .txt{
-        font-size: 0.6rem;
-        line-height: 12px;
-    }
+    
 }
 
 
@@ -305,24 +239,13 @@ h3{
         height: 300px;
         margin-bottom: 0.5em;
     }
-    
-    .producto__titulo{
-        margin-bottom: 0.5em;
-    }
 
-    .btn_ver_catalogo{
-        font-size: 1.5rem;
-    }
-
-    /*hover*/
-
-    .container_hover_txt {
+    /* hover */ 
+     .container_hover_txt {
         height: 300px;
         width: 300px;
         top: 1.3em;
     }
 
-    .txt{
-        font-size: 0.8rem;
-    }
+    
 }
