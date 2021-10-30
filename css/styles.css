@@ -14,6 +14,9 @@ a {
 a:hover {
   color: inherit; }
 
+body{
+  background-color: #fdfdfd; }
+
 * {
   font-family: 'Roboto Mono', monospace; }
 
