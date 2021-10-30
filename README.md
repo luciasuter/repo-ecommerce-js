@@ -1,0 +1,1 @@
+Este proyecto fue creado para el curso de JAVASCRIPT de CODERHOUSE, con el fin de mostrar los contenidos aprendidos a lo largo del mismo. Decidi enfocarme en un ecommerce de vinilos en donde el usuario pueda tener una buena experiencia al visitar la pagina. 
